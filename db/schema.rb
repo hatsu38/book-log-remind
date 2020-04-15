@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_080453) do
+ActiveRecord::Schema.define(version: 2020_04_15_083229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_04_15_080453) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
+  create_table "user_books", comment: "ユーザーと本の中間テーブル", force: :cascade do |t|
+    t.bigint "user_id", null: false, comment: "ユーザーID"
+    t.bigint "book_id", null: false, comment: "本ID"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_user_books_on_book_id"
+    t.index ["user_id"], name: "index_user_books_on_user_id"
+  end
+
   create_table "users", comment: "ユーザー", force: :cascade do |t|
     t.string "name", null: false, comment: "ユーザーの名前"
     t.string "code_name", null: false, comment: "ユーザーのコードネーム"
@@ -40,4 +49,6 @@ ActiveRecord::Schema.define(version: 2020_04_15_080453) do
   end
 
   add_foreign_key "books", "authors"
+  add_foreign_key "user_books", "books"
+  add_foreign_key "user_books", "users"
 end
