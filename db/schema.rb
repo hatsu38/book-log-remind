@@ -39,10 +39,9 @@ ActiveRecord::Schema.define(version: 2020_04_15_083229) do
 
   create_table "books", comment: "本", force: :cascade do |t|
     t.string "title", null: false, comment: "タイトル"
-    t.integer "asin", comment: "ASINコード"
     t.string "code", null: false, comment: "本コード(ASINがあるとは限らないため)"
     t.string "image_url", comment: "画像URL"
-    t.bigint "author_id", null: false, comment: "著者ID"
+    t.bigint "author_id", comment: "著者ID"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_books_on_author_id"
