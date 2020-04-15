@@ -1,0 +1,13 @@
+
+<%= Date.today %>
+
+本日は <%= @books.size %> 件のリマインドがあります！
+<%= @books.last.updated_at.strftime('%Y年%m月%d日') %> に読んだ本をリマインドしています。
+
+本一覧
+
+<ul>
+  <% @books.each do |book| %>
+    <li><%= link_to book.title, "https://booklog.jp/users/hatsu38/archives/1/#{book.code}" %></li>
+  <% end %>
+</ul>
