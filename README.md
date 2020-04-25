@@ -30,3 +30,7 @@ $ heroku pg:credentials:url --app book-log-remind
 
 ## Heroku Scheduler(バッチ)
 - https://dashboard.heroku.com/apps/book-log-remind/scheduler
+
+
+## ER
+![BookLogRemind ER図](https://book-log-remind.herokuapp.com/images/erd.png "BookLogRemind ER図")
