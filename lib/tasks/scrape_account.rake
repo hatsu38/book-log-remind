@@ -11,7 +11,7 @@ namespace :scrape_account do
       books.each do |book|
         author = Author.find_or_create_by(name: book['author'])
         author_id = author.presence || nil
-        create_book(book, author_id)
+        create_book(book, author_id, account)
       end
     end
   end
@@ -28,8 +28,8 @@ def get_books(json)
   paresed['books'].reverse
 end
 
-def create_book(book, author_id)
-  Book.find_or_create_by(
+def create_book(book, author_id,account)
+  account.books.find_or_create_by(
     title: book['title'],
     code: book['asin'],
     image_url: book['image'],
