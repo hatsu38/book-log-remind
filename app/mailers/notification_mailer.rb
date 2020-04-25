@@ -1,7 +1,8 @@
 class NotificationMailer < ApplicationMailer
   default from: 'hajiwata0308@gmail.com'
 
-  def remind(books)
+  def remind(account, books)
+    @account = account
     @books = books
     mail(
       to: 'hajiwata0308@gmail.com',

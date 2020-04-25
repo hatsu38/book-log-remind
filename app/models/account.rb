@@ -12,4 +12,8 @@ class Account < ApplicationRecord
       author: author
     )
   end
+
+  def self_get_book_review(book)
+    account_books.find_by(book_id: book).review_text
+  end
 end
