@@ -47,11 +47,12 @@ def review_text_get(agent, account, book)
 
     judge_review_written?(review) ? review.text.strip : nil
   rescue Mechanize::ResponseCodeError => e
-    logger.error("====口コミの取得に失敗====")
-    logger.error(e.message)
-    logger.error(e.response_code)
-    logger.error(account)
-    logger.error(book)
+    Rails.logger.error("====口コミの取得に失敗====")
+    Rails.logger.error(e.message)
+    Rails.logger.error(e.response_code)
+    Rails.logger.error(account)
+    Rails.logger.error(book)
+    Raven.capture_exception(e)
   end
 end
 

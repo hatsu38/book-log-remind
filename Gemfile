@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+# Sentryで通知する
+gem "sentry-raven"
+
 # スクレイピングする
 gem 'mechanize'
 
@@ -36,6 +39,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'pry-rails'
+
+  # ERD図を作成する
+  gem 'rails-erd'
 end
 
 group :development do
