@@ -11,9 +11,7 @@
     <li>
       <%= link_to book.title, "https://booklog.jp/users/hatsu38/archives/1/#{book.code}" %>
       <% if @account.self_get_book_review(book) %>
-        <label for="label#{book.code}">自分の書いた感想を見る</label>
-        <input type="checkbox" id="label#{book.code}" class="cssacc" />
-        <div class="accshow">
+        <div style="padding: 5px; backgroudn-color: #dedede;">
           <%= simple_format @account.self_get_book_review(book) %>
         </div>
       <% end %>
