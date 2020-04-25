@@ -7,7 +7,7 @@
 - Herokuアプリ： https://dashboard.heroku.com/apps
 ```
 $ heroku login
-$ heroku push origin master
+$ git push heroku master
 ```
 
 ## タスクの実行
@@ -25,7 +25,7 @@ $ heroku run rails scrape_account:scrape_and_book_registe
 
 ## DB接続情報を確認
 ```
-$ heroku pg:credentials:url --app book-log-remind    
+$ heroku pg:credentials:url --app book-log-remind
 ```
 
 ## Heroku Scheduler(バッチ)
