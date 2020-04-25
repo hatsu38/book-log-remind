@@ -1,13 +1,20 @@
 
 <%= Date.today %>
 
-本日は <%= @books.size %> 件のリマインドがあります！
-<%= @books.last.updated_at.strftime('%Y年%m月%d日') %> に読んだ本をリマインドしています。
+<h4>本日は <%= @books.size %> 件のリマインドがあります。</h4>
+<p><%= @books.last.updated_at.strftime('%Y年%m月%d日') %> に読んだ本をリマインドしています。</p>
 
-本一覧
+<h3>本一覧</h3>
 
 <ul>
   <% @books.each do |book| %>
-    <li><%= link_to book.title, "https://booklog.jp/users/hatsu38/archives/1/#{book.code}" %></li>
+    <li>
+      <%= link_to book.title, "https://booklog.jp/users/hatsu38/archives/1/#{book.code}" %>
+      <% if @account.self_get_book_review(book) %>
+        <div style="padding: 5px; backgroudn-color: #dedede;">
+          <%= simple_format @account.self_get_book_review(book) %>
+        </div>
+      <% end %>
+    </li>
   <% end %>
 </ul>

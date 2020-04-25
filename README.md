@@ -1,24 +1,32 @@
-# README
+# ブクログリマインダー
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ブクログに登録された情報を、数日後に自分宛にメールを送るアプリケーション。
 
-Things you may want to cover:
+## デプロイ方法
+- サーバー：heroklu
+- Herokuアプリ： https://dashboard.heroku.com/apps
+```
+$ heroku login
+$ heroku push origin master
+```
 
-* Ruby version
+## タスクの実行
+- n 日前に更新された、AccountBooksのデータをメールで送る
+- Herokuで毎朝8時に実行される
+```
+$ heroku run rails send_mail:book_remind_mail[n]
+```
 
-* System dependencies
+- BookLogのデータをスクレイピングする
+- Herokuで毎日0時に実行する
+```
+$ heroku run rails scrape_account:scrape_and_book_registe
+```
 
-* Configuration
+## DB接続情報を確認
+```
+$ heroku pg:credentials:url --app book-log-remind    
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Heroku Scheduler(バッチ)
+- https://dashboard.heroku.com/apps/book-log-remind/scheduler
