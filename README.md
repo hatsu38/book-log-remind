@@ -5,20 +5,31 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+## デプロイ方法
+- サーバー：heroklu
+- Herokuアプリ： https://dashboard.heroku.com/apps
+```
+$ heroku login
+$ heroku push origin master
+```
 
-* System dependencies
+## タスクの実行
+- n 日前に更新された、AccountBooksのデータをメールで送る
+- Herokuで毎朝8時に実行される
+```
+$ heroku run rails send_mail:book_remind_mail[n]
+```
 
-* Configuration
+- BookLogのデータをスクレイピングする
+- Herokuで毎日0時に実行する
+```
+$ heroku run rails scrape_account:scrape_and_book_registe
+```
 
-* Database creation
+## DB接続情報を確認
+```
+$ heroku pg:credentials:url --app book-log-remind    
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Heroku Scheduler(バッチ)
+- https://dashboard.heroku.com/apps/book-log-remind/scheduler
