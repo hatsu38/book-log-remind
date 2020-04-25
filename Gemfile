@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+# Sentryで通知する
+gem "sentry-raven"
+
 # スクレイピングする
 gem 'mechanize'
 
