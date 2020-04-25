@@ -1,9 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+ブクログに登録された情報を、数日後に自分宛にメールを送るアプリケーション。
 
 ## デプロイ方法
 - サーバー：heroklu
