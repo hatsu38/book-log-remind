@@ -5,6 +5,7 @@ namespace :send_mail do
     span = Date.today - before_day.days
     Account.all.each do |account|
       books = account.books.where(account_books: { updated_at: span.all_day } )
+      next if books.empty?
       NotificationMailer.remind(account, books).deliver
     end
   end
